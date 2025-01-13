@@ -1,5 +1,5 @@
 # cs342
-[!image](img.jpg)
+![image](img.jpg)
 # Code File Structure
 This figure illustrates the structure of the code files. The `onlinehospital` directory contains all the core logic of the code. In this project, views such as `ContentView` and `OnlineHospitalApp`, as well as various utility classes required for the development project (e.g., `Medication`), are not utilized.
 
