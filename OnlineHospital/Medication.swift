@@ -19,6 +19,9 @@ enum BloodType: String{
     case ABNegative = "AB-"
     case Unknown = "Unknown" // blood type might not be known at the time of creating a patient
     
+    // Bonus! Each case is self-contained, simplifying maintenance and reducing the risk of errors.
+    //Adding support for new blood types or modifying compatibility rules is straightforward. You can simply add or update a case without impacting other parts of the code.
+    //The switch statement explicitly lists each blood type and its compatible donors, making the code easy to read and understand.
     func compatibleDonors() -> [BloodType] {
         switch self {
         case .OPositive:
@@ -75,7 +78,7 @@ struct Patient{
     var height: Double
     var weight: Double
     var bloodType: BloodType
-    var medications: [Medication]
+    var medications: [Medication] //a list of all medications the patient is currently taking or has taken in the past
     
     init(medicalRecordNumber: UUID, firstName: String, lastName: String, dateOfBirth: Date, height: Double, weight: Double, bloodType: BloodType = .Unknown) {
         self.medicalRecordNumber = medicalRecordNumber
