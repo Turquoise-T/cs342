@@ -31,3 +31,5 @@ The `Patient` struct employs initializers and contains:
 - Tests for different blood types.
 - Functional tests for all implemented methods.
 - Tests for the `Medication` class methods.
+  All testcases have been passed as shown below.
+  ![image](test.jpg)
