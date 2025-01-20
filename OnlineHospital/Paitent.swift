@@ -4,8 +4,11 @@
 //
 //  Created by jiayu chang on 1/19/25.
 //
-
 import Foundation
+
+enum PatientError: Error {
+    case duplicateMedication
+}
 
 struct Patient {
     let medicalRecordNumber: UUID
@@ -35,7 +38,8 @@ struct Patient {
     }
 
     func currentMedications(currentDate: Date = .now) -> [Medication] {
-        medications.filter { !$0.isCompleted(currentDate: currentDate) }.sorted { $0.datePrescribed < $1.datePrescribed }
+        medications.filter { !$0.isCompleted(currentDate: currentDate) }
+            .sorted { $0.datePrescribed < $1.datePrescribed }
     }
 
     mutating func prescribeMedication(_ medication: Medication) throws {
