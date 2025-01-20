@@ -18,7 +18,7 @@ struct Patient {
     var heightInCm: Int
     var weightInGrams: Int
     var bloodType: BloodType
-    private(set) var medications: [Medication]
+    var medications: [Medication] // this should be var to be mutable for contentview
 
     var fullNameAndAge: String {
         let age = Calendar.current.dateComponents([.year], from: dateOfBirth, to: .now).year ?? 0
@@ -53,3 +53,4 @@ struct Patient {
         bloodType.compatibleDonors()
     }
 }
+

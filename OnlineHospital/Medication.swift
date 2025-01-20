@@ -1,5 +1,5 @@
 import Foundation
-enum Route: String {
+enum Route: String, CaseIterable {
     case oral
     case intravenous
     case intramuscular
