@@ -40,7 +40,7 @@ The `Patient` struct employs initializers and contains:
 ### ContentView
 **Main view displaying a list of patients with navigation to detailed views and form for adding new patients**
 ### PatientDetailView
-** A detailed view that displays a patient's personal information, medical details, and current medications**
+**A detailed view that displays a patient's personal information, medical details, and current medications**
 ### PatientStore
 **anage all the data attributes related to Patients(give a general interface for patient data).**
 ### PrescribeMedicationView
