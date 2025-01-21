@@ -37,17 +37,47 @@ The `Patient` struct employs initializers and contains:
 
 # Assignment2
 
-## core components
-### ContentView
-**Main view displaying a list of patients with navigation to detailed views and form for adding new patients**
-### PatientDetailView
-** A detailed view that displays a patient's personal information, medical details, and current medications**
-### PatientStore
-**anage all the data attributes related to Patients(give a general interface for patient data).**
-### PrescribeMedicationView
-**Take charge of the SwiftUI for medication**
-### AddPatientView
-**Form view for adding a new patient to the system**
+## Conclusion
+
+In this assignment, I have implemented two SwiftUI views: `PatientDetailView` and `PrescribeMedicationView`, which are part of a larger `OnlineHospital` application. These views are designed to display patient details and allow the prescription of new medications, respectively. This report explains the thought process behind the design choices, the functionality of the code, and the SwiftUI concepts used.
+
+---
+
+## Design Overview
+
+The goal was to create modular, maintainable, and testable views while ensuring a seamless user experience. Both views follow SwiftUI's declarative and reactive design principles, which simplify state management and UI updates.
+
+### 1. Modular Design
+
+Each view serves a specific purpose:
+
+- **`PatientDetailView`**: Displays patient details (name, age, height, weight, blood type) and their current medications. It also provides an option to prescribe new medications.
+
+- **`PrescribeMedicationView`**: A form where the user can input medication details (name, dose, route, frequency, and duration) and save the prescription.
+
+This separation adheres to the **Single Responsibility Principle**, making the views easier to maintain and extend.
+
+---
+
+## SwiftUI Concepts Used
+
+### 1. `@State`
+
+`@State` is used for managing view-specific state variables. These states are local to the view and automatically trigger UI updates when modified. 
+### 2. `@ObservedObject`
+`@ObservedObject` is used to observe a shared data model (`PatientStore`) that provides data across multiple views. Changes in the `PatientStore` automatically update any observing views.
+
+---
+
+### NavigationStack and Toolbars
+- **NavigationStack** is used for hierarchical navigation and provides a modern approach to managing navigation stacks in SwiftUI.
+- **Toolbars** are added for action buttons such as "Cancel" and "Save."
+
+---
+
+### Form Validation
+Form validation ensures data integrity by enabling the "Save" button only when all required fields are valid.
+
 
 
 
