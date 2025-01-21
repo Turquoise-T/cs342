@@ -11,7 +11,8 @@ struct PrescribeMedicationView: View {
     let patient: Patient
     @ObservedObject var store: PatientStore
     @Environment(\.dismiss) var dismiss
-
+    
+    // State variables for the form input fields.
     @State private var name: String = ""
     @State private var dose: String = ""
     @State private var route: Route = .oral
@@ -23,15 +24,18 @@ struct PrescribeMedicationView: View {
     var isFormValid: Bool {
         !name.isEmpty && !dose.isEmpty && Int(frequency) != nil && Int(duration) != nil
     }
-
+    
+    // combine all the components together
     var body: some View {
         NavigationStack {
             Form {
+                // a section for entering medication details
                 Section(
                     header: Text("Medication Details"), //when and how to use closure
                     content: {
                         TextField("Name", text: $name)
                         TextField("Dose", text: $dose)
+                        //picker for selecting the administration route
                         Picker("Route", selection: $route) {
                             ForEach(Route.allCases, id: \.self) { route in
                                 Text(route.rawValue).tag(route)
@@ -67,6 +71,7 @@ struct PrescribeMedicationView: View {
                             frequencyPerDay: freq,
                             durationDays: dur
                         )
+                        // Checking if the medication is already prescribed.
                         if patient.medications.contains(where: { $0.name == name }) {
                             errorMessage = "Medication already prescribed."
                         } else {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Main view displaying a list of patients with navigation to detailed views and form for adding new patients
+// Main view displaying a list of patients with navigation to detailed views and form for adding new patients
 struct ContentView: View {
     @StateObject private var store = PatientStore() // StateObject to manage the patient store's lifecycle
     @State public var searchText: String = "" // State to track the search text
@@ -38,7 +38,7 @@ struct ContentView: View {
                 }
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) // Search bar for filtering
-            .navigationTitle("Patients") // Title for the navigation bar
+            .navigationTitle("Patients")
             .toolbar {
                 Button(action: { showingAddPatient.toggle() }) { // Button to show add patient form
                     Image(systemName: "plus")
