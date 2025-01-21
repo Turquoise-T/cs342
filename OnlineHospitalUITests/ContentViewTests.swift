@@ -6,50 +6,55 @@
 //
 
 import XCTest
-import SwiftUI
-@testable import OnlineHospital
 
 final class ContentViewTests: XCTestCase {
-    func testSearchFilter() {
-        let testStore = PatientStore()
+
+    func testPrescribeMedication() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        // Navigate to the PatientDetailView
+        app.buttons["Patients"].tap()
+        app.buttons["John Doe"].tap()
         
-        // Initialize test patients safely
-        guard let john = Patient(
-            medicalRecordNumber: UUID(),
-            firstName: "John",
-            lastName: "Doe",
-            dateOfBirth: Date(),
-            heightInCm: 175,
-            weightInGrams: 70000,
-            bloodType: .abPositive
-        ) else {
-            XCTFail("Failed to initialize patient: John")
-            return
-        }
-        
-        guard let jane = Patient(
-            medicalRecordNumber: UUID(),
-            firstName: "Jane",
-            lastName: "Smith",
-            dateOfBirth: Date(),
-            heightInCm: 160,
-            weightInGrams: 60000,
-            bloodType: .oNegative
-        ) else {
-            XCTFail("Failed to initialize patient: Jane")
-            return
-        }
-        
-        // Add patients to the store
-        testStore.patients = [john, jane]
-        
-        // Simulate search input
-        let contentView = ContentView()
-        contentView.searchText = "Doe"
-        
-        // Check the filtered patient list
-        let filteredPatients = contentView.filteredPatients
-        XCTAssertEqual(filteredPatients.count, 1)
-        XCTAssertEqual(filteredPatients.first?.lastName, "Doe")
+        // Open the "Prescribe Medication" form
+        app.buttons["Prescribe Medication"].tap()
+
+        // Input medication details
+        let medicationNameField = app.textFields["Name"]
+        XCTAssertTrue(medicationNameField.exists, "Medication name field should exist")
+        medicationNameField.tap()
+        medicationNameField.typeText("Amoxicillin")
+
+        let doseField = app.textFields["Dose"]
+        XCTAssertTrue(doseField.exists, "Dose field should exist")
+        doseField.tap()
+        doseField.typeText("500")
+
+        let frequencyField = app.textFields["Frequency (per day)"]
+        XCTAssertTrue(frequencyField.exists, "Frequency field should exist")
+        frequencyField.tap()
+        frequencyField.typeText("2")
+
+        let durationField = app.textFields["Duration (days)"]
+        XCTAssertTrue(durationField.exists, "Duration field should exist")
+        durationField.tap()
+        durationField.typeText("7")
+
+        // Select route (Picker)
+        let routePicker = app.pickers["Route"]
+        XCTAssertTrue(routePicker.exists, "Route picker should exist")
+        routePicker.tap()
+        app.pickerWheels.element.adjust(toPickerWheelValue: "Oral") // Adjust to "Oral" route
+
+        // Save the medication
+        app.buttons["Save"].tap()
+
+        // Assert that the medication was saved and the form was dismissed
+        XCTAssertFalse(app.textFields["Name"].exists, "The form should be dismissed after saving")
+
+        // Verify the medication appears in the Current Medications section
+        let medicationText = app.staticTexts["Amoxicillin"]
+        XCTAssertTrue(medicationText.exists, "New medication should appear in the Current Medications section")
     }
 }

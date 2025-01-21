@@ -36,6 +36,7 @@ The `Patient` struct employs initializers and contains:
 
 
 # Assignment2
+
 ## core components
 ### ContentView
 **Main view displaying a list of patients with navigation to detailed views and form for adding new patients**
