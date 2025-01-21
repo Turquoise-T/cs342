@@ -37,6 +37,16 @@ The `Patient` struct employs initializers and contains:
 
 # Assignment2
 
+### ContentView
+**Main view displaying a list of patients with navigation to detailed views and form for adding new patients**
+### PatientDetailView
+** A detailed view that displays a patient's personal information, medical details, and current medications**
+### PatientStore
+**anage all the data attributes related to Patients(give a general interface for patient data).**
+### PrescribeMedicationView
+**Take charge of the SwiftUI for medication**
+### AddPatientView
+**Form view for adding a new patient to the system**
 ## Conclusion
 
 In this assignment, I have implemented two SwiftUI views: `PatientDetailView` and `PrescribeMedicationView`, which are part of a larger `OnlineHospital` application. These views are designed to display patient details and allow the prescription of new medications, respectively. This report explains the thought process behind the design choices, the functionality of the code, and the SwiftUI concepts used.
