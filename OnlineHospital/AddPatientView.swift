@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Form view for adding a new patient to the system
+// Form view for adding a new patient to the system
 struct AddPatientView: View {
     @Environment(\.dismiss) var dismiss // Dismiss environment variable to close the form
     @ObservedObject var store: PatientStore // ObservedObject to update the patient store

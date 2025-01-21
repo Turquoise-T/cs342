@@ -1,6 +1,6 @@
 # cs342
 ![image](img.jpg)
-# Code File Structure
+# Assignment1
 This figure illustrates the structure of the code files. The `onlinehospital` directory contains all the core logic of the code. In this project, views such as `ContentView` and `OnlineHospitalApp`, as well as various utility classes required for the development project (e.g., `Medication`), are not utilized.
 
 ## Core Components
@@ -33,3 +33,20 @@ The `Patient` struct employs initializers and contains:
 - Tests for the `Medication` class methods.
   All testcases have been passed as shown below.
   ![image](test.jpg)
+
+
+# Assignment2
+## core components
+### ContentView
+**Main view displaying a list of patients with navigation to detailed views and form for adding new patients**
+### PatientDetailView
+** A detailed view that displays a patient's personal information, medical details, and current medications**
+### PatientStore
+**anage all the data attributes related to Patients(give a general interface for patient data).**
+### PrescribeMedicationView
+**Take charge of the SwiftUI for medication**
+### AddPatientView
+**Form view for adding a new patient to the system**
+
+
+
